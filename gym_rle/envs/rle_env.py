@@ -7,7 +7,7 @@ from gym import utils
 from gym.utils import seeding
 
 try:
-    from rle_python_interface import rle_python_interface
+    from rle_python_interface import RLEInterface
 except ImportError as e:
     raise error.DependencyNotInstalled("{}. (HINT: you can install RLE dependencies by running 'pip install gym[rle]'.)".format(e))
 
@@ -72,7 +72,7 @@ class RleEnv(gym.Env, utils.EzPickle):
 
         self._obs_type = obs_type
         self.frameskip = frameskip
-        self.rle = rle_python_interface.RLEInterface()
+        self.rle = RLEInterface()
         self.viewer = None
 
         # Tune (or disable) RLE's action repeat:
